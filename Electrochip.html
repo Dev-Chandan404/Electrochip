@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electrochip - Professional Electrical Services in Punjab</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="./img/circuit-logo-template-vector-removebg-preview.png" sizes="32*32" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #333;
+            background-color: #f8f8f8;
+            line-height: 1.6;
+        }
+
+        .main1 {
+            width: 100%;
+            background-color: #f3f0f6;
+        }
+
+        .main2 {
+            width: 100%;
+            background-color: #ffffff;
+        }
+
+        /* ──────────────── Animations (non-disruptive to layout) ──────────────── */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes cardReveal {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+
+        /* ──────────────── Navbar ──────────────── */
+        .navbar {
+            width: 100%;
+            height: 90px;
+            background: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 6%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            font-size: 34px;
+            font-weight: bold;
+            color: #4b208c;
+            white-space: nowrap;
+        }
+
+        .logo-area img {
+            height: 64px;
+            margin-right: 14px;
+        }
+
+        .nav-area {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-item {
+            padding: 10px 22px;
+            border-radius: 30px;
+            font-weight: 600;
+            color: #4b208c;
+            text-decoration: none;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .nav-item:hover {
+            background-color: #4b208c;
+            color: white;
+        }
+
+        .mobile-menu-btn {
+            font-size: 36px;
+            color: #4b208c;
+            cursor: pointer;
+            display: none;
+        }
+
+        /* ──────────────── Hero ──────────────── */
+        .hero {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 80px 6% 60px;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-left {
+            flex: 1;
+            min-width: 340px;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1.1s ease-out forwards;
+            animation-delay: 0.3s;
+        }
+
+        .hero-right {
+            flex: 1;
+            text-align: center;
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1.1s ease-out forwards;
+            animation-delay: 0.6s;
+        }
+
+        .hero-title {
+            font-size: 52px;
+            font-weight: bold;
+            color: #4b208c;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-desc {
+            font-size: 20px;
+            color: #555;
+            margin-bottom: 36px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 16px 36px;
+            background-color: #4b208c;
+            color: white;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 18px;
+            transition: all 0.3s;
+            box-shadow: 0 6px 16px rgba(75,32,140,0.25);
+        }
+
+        .btn:hover {
+            background-color: #3a186e;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 24px rgba(75,32,140,0.35);
+        }
+
+        .imgRound {
+            border-radius: 50%;
+            border: 8px solid #4b208c;
+            object-fit: cover;
+            max-width: 100%;
+        }
+
+        /* ──────────────── Titles ──────────────── */
+        .section-title {
+            font-size: 44px;
+            font-weight: bold;
+            color: #4b208c;
+            text-align: center;
+            margin: 80px 0 50px;
+        }
+
+        .section-title img {
+            height: 52px;
+            vertical-align: middle;
+            margin-left: 14px;
+        }
+
+        /* ──────────────── Services ──────────────── */
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 32px;
+            padding: 0 6% 80px;
+        }
+
+        .service-card {
+            width: 320px;
+            background: white;
+            border-radius: 20px;
+            padding: 32px 24px;
+            text-align: center;
+            box-shadow: 0 6px 22px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: cardReveal 0.9s ease-out forwards;
+            animation-timeline: view();
+            animation-range: entry 25% cover 55%;
+        }
+
+        @supports not (animation-timeline: view()) {
+            .service-card {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 18px 44px rgba(75,32,140,0.22);
+        }
+
+        .service-icon {
+            width: 110px;
+            height: 110px;
+            margin-bottom: 24px;
+        }
+
+        .service-title {
+            font-size: 24px;
+            color: #4b208c;
+            font-weight: bold;
+            margin-bottom: 16px;
+        }
+
+        .service-desc {
+            color: #666;
+            font-size: 17px;
+        }
+
+        /* ──────────────── About ──────────────── */
+        .about-section {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 80px 6%;
+            gap: 70px;
+            align-items: center;
+        }
+
+        .about-left {
+            flex: 1;
+            min-width: 360px;
+        }
+
+        .about-title {
+            font-size: 44px;
+            color: #4b208c;
+            margin-bottom: 32px;
+        }
+
+        .about-desc {
+            font-size: 20px;
+            color: #444;
+            margin-bottom: 36px;
+        }
+
+        .about-images {
+            flex: 1;
+            position: relative;
+            min-width: 360px;
+            text-align: center;
+        }
+
+        .about-main-img {
+            border-radius: 50%;
+            border: 8px solid #4b208c;
+            max-width: 440px;
+        }
+
+        .about-inset-img {
+            position: absolute;
+            bottom: -18%;
+            right: 81%;
+            border-radius: 50%;
+            border: 8px solid #4b208c;
+            max-width: 280px;
+            box-shadow: 0 10px 32px rgba(0,0,0,0.2);
+        }
+
+        /* ──────────────── Blog ──────────────── */
+        .blog-section {
+            padding: 0 6% 80px;
+        }
+
+        .blog-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .blog-card {
+            width: 440px;
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 22px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 16px 40px rgba(75,32,140,0.2);
+        }
+
+        .blog-card img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 28px;
+        }
+
+        .blog-title {
+            font-size: 26px;
+            color: #4b208c;
+            margin-bottom: 14px;
+        }
+
+        .blog-desc {
+            color: #555;
+            font-size: 17px;
+        }
+
+        /* ──────────────── Contact ──────────────── */
+        .contact-section {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 80px 6%;
+            gap: 60px;
+            background: white;
+        }
+
+        .contact-form-box {
+            flex: 1;
+            min-width: 380px;
+            padding: 50px;
+            background: #f9f7fc;
+            border-radius: 20px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        .form-title {
+            font-size: 38px;
+            color: #4b208c;
+            margin-bottom: 36px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 16px 18px;
+            margin: 14px 0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 17px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #4b208c;
+            outline: none;
+        }
+
+        textarea {
+            height: 180px;
+            resize: vertical;
+        }
+
+        .map-box {
+            flex: 1;
+            min-width: 380px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+        }
+
+        /* ──────────────── Footer ──────────────── */
+        .footer {
+            background: #190734;
+            color: white;
+            padding: 80px 6% 40px;
+        }
+
+        .footer-top {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-item {
+            flex: 1;
+            min-width: 240px;
+            font-size: 18px;
+        }
+
+        .footer-item img {
+            width: 36px;
+            vertical-align: middle;
+            margin-right: 12px;
+        }
+
+        .newsletter-area {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin: 24px 0;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            min-width: 240px;
+            padding: 16px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 17px;
+        }
+
+        .subscribe-btn {
+            padding: 16px 40px;
+            background: #4b208c;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .subscribe-btn:hover {
+            background: #3a186e;
+        }
+
+        .social-icons {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .social-icons img {
+            width: 40px;
+            margin: 0 12px;
+            filter: brightness(0) invert(1);
+            transition: transform 0.3s;
+        }
+
+        .social-icons img:hover {
+            transform: scale(1.1);
+        }
+
+        .copyright {
+            text-align: center;
+            color: #bbb;
+            font-size: 15px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+        }
+
+        /* ──────────────── Mobile Responsive ──────────────── */
+        @media (max-width: 980px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-area {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 90px;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 30px 6%;
+                box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+                gap: 20px;
+                text-align: center;
+            }
+
+            .nav-area.active {
+                display: flex;
+            }
+
+            .hero, .about-section, .contact-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-inset-img {
+                position: static;
+                margin: 50px auto 0;
+            }
+
+            .hero-title {
+                font-size: 42px;
+            }
+
+            .section-title {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .navbar {
+                padding: 0 4%;
+            }
+
+            .logo-area {
+                font-size: 28px;
+            }
+
+            .logo-area img {
+                height: 54px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main1">
+        <!-- Navbar -->
+        <div class="navbar">
+            <div class="logo-area">
+                Electrochip
+            </div>
+
+            <div class="mobile-menu-btn" onclick="toggleMenu()">☰</div>
+
+            <div class="nav-area" id="navMenu">
+                <a href="#" class="nav-item">HOME</a>
+                <a href="#" class="nav-item">ABOUT</a>
+                <a href="#" class="nav-item">SERVICE</a>
+                <a href="#" class="nav-item">BLOG</a>
+                <a href="#" class="nav-item">CONTACT</a>
+            </div>
+        </div>
+
+        <!-- Hero -->
+        <div class="hero">
+            <div class="hero-left">
+                <div class="hero-title">
+                    ELECTRICAL<br>SERVICE<br>PROVIDERS
+                </div>
+                <div class="hero-desc">
+                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum...
+                </div>
+                <a href="#" class="btn">Contact Us</a>
+            </div>
+            <div class="hero-right">
+                <img src="img/slider-img.jpg" height="400" width="400" class="imgRound" alt="Electrical Service Hero">
+            </div>
+        </div>
+    </div>
+
+    <div class="main2">
+        <!-- Services -->
+        <div class="section-title">Our Services <img src="img/plug.png" alt="plug icon"></div>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="img/s1.png" class="service-icon" alt="Equipment Installation">
+                <div class="service-title">Equipment Installation</div>
+                <div class="service-desc">There are many variations of passages of Lorem Ipsum available...</div>
+            </div>
+            <div class="service-card">
+                <img src="img/s2.png" class="service-icon" alt="Renewable Energy">
+                <div class="service-title">Renewable Energy</div>
+                <div class="service-desc">There are many variations of passages of Lorem Ipsum available...</div>
+            </div>
+            <div class="service-card">
+                <img src="img/s3.png" class="service-icon" alt="Maintenance">
+                <div class="service-title">Equipment Maintenance</div>
+                <div class="service-desc">There are many variations of passages of Lorem Ipsum available...</div>
+            </div>
+            <div class="service-card">
+                <img src="img/s4.png" class="service-icon" alt="Offshore Engineering">
+                <div class="service-title">Offshore Engineering</div>
+                <div class="service-desc">There are many variations of passages of Lorem Ipsum available...</div>
+            </div>
+            <div class="service-card">
+                <img src="img/s5.png" class="service-icon" alt="Energy Solutions">
+                <div class="service-title">Energy Solutions</div>
+                <div class="service-desc">There are many variations of passages of Lorem Ipsum available...</div>
+            </div>
+        </div>
+
+        <!-- About -->
+        <div class="about-section">
+            <div class="about-left">
+                <div class="about-title">About Us <img src="img/plug.png" alt="plug icon"></div>
+                <div class="about-desc">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam...
+                </div>
+                <a href="#" class="btn">Read More</a>
+            </div>
+            <div class="about-images">
+                <img src="img/about-img1.jpg" class="about-main-img" alt="About Main Image">
+                <img src="img/about-img2.jpg" class="about-inset-img" alt="About Inset Image">
+            </div>
+        </div>
+
+        <!-- Blog -->
+        <div class="blog-section">
+            <div class="section-title">Blog <img src="img/plug.png" alt="plug icon"></div>
+
+            <div class="blog-grid">
+                <div class="blog-card">
+                    <img src="img/blog1.jpg" alt="Blog 1">
+                    <div class="blog-content">
+                        <div class="blog-title">Blog Title Goes Here</div>
+                        <div class="blog-desc">There are many variations of passages of Lorem Ipsum available...</div>
+                    </div>
+                </div>
+                <div class="blog-card">
+                    <img src="img/blog2.jpg" alt="Blog 2">
+                    <div class="blog-content">
+                        <div class="blog-title">Blog Title Goes Here</div>
+                        <div class="blog-desc">There are many variations of passages of Lorem Ipsum available...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact -->
+        <div class="contact-section">
+            <div class="contact-form-box">
+                <div class="form-title">Contact Us <img src="img/plug.png" alt="plug icon"></div>
+                <input type="text" placeholder="Name">
+                <input type="email" placeholder="Email">
+                <input type="tel" placeholder="Phone">
+                <textarea placeholder="Message"></textarea>
+                <div class="btn" style="text-align:center; cursor:pointer; width:100%; padding:16px; margin-top: 20px;">Send</div>
+            </div>
+            <div class="map-box">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1686.7067313977866!2d75.65281565!3d32.27386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391c7f6cfcfcaf0b%3A0x62e2a89be5e4d5ff!2sGandhi%20Chowk%2C%20Pathankot%2C%20Punjab%20145001!5e0!3m2!1sen!2sin!4v1730711439997!5m2!1sen!2sin" width="100%" height="480" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-top">
+                <div class="footer-item">
+                    <img src="img/location-white.png" alt="Location"> Gandhi Chowk, Pathankot, Punjab
+                </div>
+                <div class="footer-item">
+                    <img src="img/telephone-white.png" alt="Phone"> Call: +91 98765 43210
+                </div>
+                <div class="footer-item">
+                    <img src="img/envelope-white.png" alt="Email"> info@electrochip.in
+                </div>
+            </div>
+
+            <div class="newsletter-area">
+                <input type="email" placeholder="Your Email" class="newsletter-input">
+                <button class="subscribe-btn">SUBSCRIBE</button>
+            </div>
+
+            <div class="social-icons" style="text-align:center; margin:30px 0;">
+                <img src="img/fb.png" alt="Facebook">
+                <img src="img/twitter.png" alt="Twitter">
+                <img src="img/linkedin.png" alt="LinkedIn">
+                <img src="img/instagram.png" alt="Instagram">
+            </div>
+
+            <div class="copyright">
+                © 2026 Electrochip – All Rights Reserved | Licensed Electrical Contractor, Punjab
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("navMenu").classList.toggle("active");
+        }
+    </script>
+
+</body>
+</html>
