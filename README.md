@@ -1,16 +1,18 @@
-# ─────────────────────────────────────────────
+# ────────────────────────────────────────────
 
 # ELECTROCHIP
 
 # Static Electrochip UI (HTML + CSS Only)
 
-# ─────────────────────────────────────────────
+# ────────────────────────────────────────────
 
 > A pure layout project built using only HTML5 and CSS3.
 > No JavaScript. No frameworks. Just structure and styling.
 
-──────────────────────────────────────────────
+─────────────────────────────────────────────
+
 OVERVIEW
+
 ──────────────────────────────────────────────
 
 Electrochip is a static e-commerce interface designed to demonstrate
@@ -29,7 +31,9 @@ There is no dynamic behavior — this is intentional.
 The goal is to master layout before logic.
 
 ──────────────────────────────────────────────
+
 TECH STACK
+
 ──────────────────────────────────────────────
 
 HTML5    → Page structure and content
@@ -42,7 +46,9 @@ No build tools.
 Runs directly in any modern browser.
 
 ──────────────────────────────────────────────
+
 PROJECT STRUCTURE
+
 ──────────────────────────────────────────────
 
 Electrochip/
@@ -57,7 +63,9 @@ Electrochip/
 Simple. Transparent. Easy to understand.
 
 ──────────────────────────────────────────────
+
 FEATURES
+
 ──────────────────────────────────────────────
 
 [✔] Static storefront layout
@@ -70,7 +78,9 @@ FEATURES
 Everything you see is achieved using layout techniques only.
 
 ──────────────────────────────────────────────
+
 RUN LOCALLY
+
 ──────────────────────────────────────────────
 
 Clone the repository:
@@ -96,7 +106,9 @@ Or double-click `index.html`.
 That's it.
 
 ──────────────────────────────────────────────
+
 LEARNING OBJECTIVES
+
 ──────────────────────────────────────────────
 
 This project is ideal for understanding:
@@ -111,7 +123,9 @@ If you can build this without JavaScript,
 you understand the foundation of the web.
 
 ──────────────────────────────────────────────
+
 HOW TO EXTEND
+
 ──────────────────────────────────────────────
 
 You can evolve this into a full application by adding:
@@ -126,7 +140,9 @@ You can evolve this into a full application by adding:
 This repository is the starting layer — the UI shell.
 
 ──────────────────────────────────────────────
+
 PHILOSOPHY
+
 ──────────────────────────────────────────────
 
 Frameworks hide complexity.
@@ -137,18 +153,24 @@ Build the foundation first.
 Add behavior later.
 
 ──────────────────────────────────────────────
+
 AUTHOR
+
 ──────────────────────────────────────────────
 
 Chandan
 Frontend Practice Project
 
 ──────────────────────────────────────────────
+
 LICENSE
+
 ──────────────────────────────────────────────
 
 Open for learning, modification, and reuse.
 
 ──────────────────────────────────────────────
+
 END
+
 ──────────────────────────────────────────────
