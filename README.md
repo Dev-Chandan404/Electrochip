@@ -171,6 +171,5 @@ Open for learning, modification, and reuse.
 
 ──────────────────────────────────────────────
 
-END
-
+💡 This project is for learning and front-end development practice.
 ──────────────────────────────────────────────
