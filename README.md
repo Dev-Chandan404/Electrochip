@@ -28,7 +28,7 @@
 <br/>
 
 <a href="https://dev-chandan404.github.io/Electrochip/">
-  <img src="./images/el.png" alt="Electrochip Website Preview"/>
+  <img src="./img/el.png" alt="Electrochip Website Preview"/>
 </a>
 
 *Electrochip — A modern, fully responsive single-page template for an electrical services company, Punjab, India*
